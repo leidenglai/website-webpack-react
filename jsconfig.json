@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "assets/*": ["src/assets/*"],
+      "containers/*": ["src/containers/*"],
+      "utils/*": ["src/utils/*"],
+      "stores/*": ["src/stores/*"],
+      "tpl/*": ["src/tpl/*"],
+      "layout/*": ["src/tpl/layout/*"],
+      "components/*": ["src/components/*"]
+    },
+    "experimentalDecorators": true
+  }
+}
