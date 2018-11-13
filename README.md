@@ -38,6 +38,7 @@ npm run build -- 20171124(本次项目版本)
 
 本架构采用个是`HtmlWebpackPlugin+underscore-template-loader`拼合拆分的模板文件，同时模板文件可以传入变量；
 在 underscore-template-loader 中使用 lodash 的 template 方法，解析模板，语法是 ejs（使用‘<% %>’关键字输出变量）。
+
 webpack 解析 html 的 rules：
 
 ```javascript
@@ -61,7 +62,9 @@ webpack 解析 html 的 rules：
 ### 模块拆分
 
 加载模板时，都是不是采用传统的直接加载 html 文件的方式，而是采用加载 js 配置文件，通过去 js 动态解析合并后再返回模板字符串。
-在`webpack.config.tpl.js`配置中，template 字段加载 xxx/html.js 配置文件，该文件描述了本模块的 layout 模板和 content 模板；
+
+在`webpack.config.tpl.js`配置中，template 字段加载 xxx/html.js 配置文件，该文件描述了本模块的 layout 模板和 content 模板。
+
 如`src/pages/product/test/html.js`:
 
 ```javascript
@@ -80,6 +83,7 @@ _layout_
 
 顾名思义，此文件描述当前模块的布局方式；
 因为网站可能会有多个不一样的 header、nav 文件，同时有可能会有多个 footer。为了满足多种 layout 的需求，所以在项目中预制多种布局方式，如上述代码加载的是 main 模板，main 模板中有自己的 header 和 footer。
+
 `tpl/layout/main/html.js`:
 
 ```js
@@ -134,11 +138,15 @@ export default initStore
 ### 数据更新
 
 在 store 中定义 action 方法，如`src/stores/testStore.js`中注释的示例方法`fetchUserData`。
+
 后端的 API 按后端模块统一放在 services 文件夹中统一管理，导出单例。更新或者获取后端数据。
+
 与后端交互使用 fetch 代替 ajax，这是一个很成熟的异步后端交互的插件，用法类似于 ajax，返回 Promise 对象，在 Store 中使用非常方便。具体数据请求逻辑封装在`src/utils/requestData.js`。
 
 # 最后
 
 其实本项目有在*传统铺页面前端开发*过度到现在流行的*模块化开发*有很大的参考价值。同时对于想在项目中部分使用 React 组件也有帮助。
+
 模块化也不再依赖原来的 `#include`等等方式，而且可以直接使用 ES6 的语法，简直酸爽。
+
 同样是前后端协同开发，将后端从一些复杂的前端逻辑中解放出来，只用去管一些简单的布局代码，实现部分前后端分离，对前端的技术要求也不会像直接分离式开发那样高，还是一种不错的过渡解决方案。
