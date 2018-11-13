@@ -77,6 +77,7 @@ module.exports = layout
 ```
 
 _layout_
+
 顾名思义，此文件描述当前模块的布局方式；
 因为网站可能会有多个不一样的 header、nav 文件，同时有可能会有多个 footer。为了满足多种 layout 的需求，所以在项目中预制多种布局方式，如上述代码加载的是 main 模板，main 模板中有自己的 header 和 footer。
 `tpl/layout/main/html.js`:
