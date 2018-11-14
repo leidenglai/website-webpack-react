@@ -1,5 +1,5 @@
 // import { observable, computed, flow } from 'mobx'
-import { observable, computed } from 'mobx'
+import { observable, computed, action } from 'mobx'
 import initStore from 'utils/initStore'
 // import testService from 'services/testService'
 
@@ -18,6 +18,7 @@ class TestStore {
     return this.userData.firstName + this.userData.lastName || ''
   }
 
+  @action
   changeSelect() {
     this.select = !this.select
   }
