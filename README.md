@@ -138,10 +138,32 @@ export default initStore
 ### 数据更新
 
 在 store 中定义 action 方法，如`src/stores/testStore.js`中注释的示例方法`fetchUserData`。
-
 后端的 API 按后端模块统一放在 services 文件夹中统一管理，导出单例。更新或者获取后端数据。
-
 与后端交互使用 fetch 代替 ajax，这是一个很成熟的异步后端交互的插件，用法类似于 ajax，返回 Promise 对象，在 Store 中使用非常方便。具体数据请求逻辑封装在`src/utils/requestData.js`。
+
+## 抛弃 jQuery
+
+由于现在 js 的 API 愈发强大和对浏览器的兼容越来越完善，以及各种框架的兴起，jQuery 就显得有些鸡肋。
+
+本项目部分使用 react，react 本身不依赖 jQuery。在非 react 的地方，尝试将 jQuery 完全抛弃。我在项目中使用如下的替代品：
+
+### Dom 操作
+
+- 选择：`querySelectorAll()`、`querySelector()`等
+- 插入：`innerHtml`、插入文本 `textContent`等很多新的 API
+- class 操作：`clssList`和他的几个方法
+
+### Ajax
+
+对于 IE8+ 以上浏览器，在生产环境使用 Fetch 是完全可行的。
+
+### 动画
+
+CSS3 的动画+requestAnimationFrame 替换 jQuery 可以说是完全无压力的，而且从流畅的上来说，CSS 动画是远远优于 jQuery 的。
+
+### 辅助函数
+
+underscore 和 lodash 这两个插件库对 js 函数进行了大大的增强。配合上按需加载，也不用担心插件库冗余代码。
 
 # 最后
 
